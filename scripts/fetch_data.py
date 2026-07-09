@@ -248,6 +248,21 @@ def main():
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
+    # Bake data inline into index.html so the page loads instantly (no fetch needed)
+    inline = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
+    marker_begin = "// @@NAV_DATA_BEGIN@@"
+    marker_end   = "// @@NAV_DATA_END@@"
+    html_path = "index.html"
+    with open(html_path, encoding="utf-8") as f:
+        html = f.read()
+    i0 = html.index(marker_begin)
+    i1 = html.index(marker_end) + len(marker_end)
+    new_block = f"{marker_begin}\nconst NAV_DATA = {inline};\n{marker_end}"
+    html = html[:i0] + new_block + html[i1:]
+    with open(html_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"  index.html updated with inline data")
+
     print(f"\n=== Done ===")
     print(f"  data.json written")
     print(f"  Uføretrygd years:  {uforetrygd['years3']}")
