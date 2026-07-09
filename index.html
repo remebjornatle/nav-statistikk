@@ -241,6 +241,11 @@
 </div>
 
 <script>
+window.onerror = function(msg, src, line, col, err) {
+  document.body.insertAdjacentHTML('afterbegin',
+    '<div style="background:#c0392b;color:#fff;padding:1rem 2rem;font-family:monospace;position:fixed;top:0;left:0;right:0;z-index:9999;white-space:pre-wrap">JS FEIL linje ' + line + ': ' + msg + (err ? '\n' + err.stack : '') + '</div>');
+};
+
 // ═══════════════════════════════════════════════════════
 // STYLE CONFIG  (colours/weights — kept here, not in data.json)
 // ═══════════════════════════════════════════════════════
