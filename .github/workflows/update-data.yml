@@ -1,0 +1,37 @@
+name: Update data
+
+on:
+  workflow_dispatch:   # ← the manual "Run workflow" button in GitHub UI
+  schedule:
+    - cron: '0 9 15 1 *'  # January 15th each year (NAV publishes December data in Jan)
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests openpyxl
+
+      - name: Fetch and parse NAV data
+        run: python scripts/fetch_data.py
+
+      - name: Commit data.json if changed
+        run: |
+          git config user.name "nav-statistikk-bot"
+          git config user.email "actions@github.com"
+          git add data.json
+          if git diff --staged --quiet; then
+            echo "No changes — data is already up to date."
+          else
+            git commit -m "Update data.json — $(date +%Y-%m-%d)"
+            git push
+          fi

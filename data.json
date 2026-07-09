@@ -1,0 +1,1366 @@
+{
+  "generated": "2026-07-09",
+  "sources": {
+    "uforetrygd_page": "https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/uforetrygd/diagnoser-uforetrygd",
+    "sykefravar_page": "https://www.nav.no/no/nav-og-samfunn/statistikk/sykefravar-statistikk/sykefravaersstatistikk-arsstatistikk",
+    "tabell1_url": "https://www.nav.no/_/attachment/download/381d9f6d-106f-40c3-ba2e-82779af9c418:37a6ed86af559a6607428b1f5ac93e567332c3a0/Tabell%201_Upantall_diagnoser_kj%C3%B8nn_%C3%A5r_2012-2025.xlsx",
+    "tabell3_url": "https://www.nav.no/_/attachment/download/9e5f09c6-ea4a-44f2-8ccc-4dd5bf6e4dbd:a50d63e8ccbd31f2bdb58858364b8d8654439b3c/Tabell%203_Uf%C3%B8rediagnoser_2025_De%20mest%20brukte.xlsx",
+    "syfra2301_url": "https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx"
+  },
+  "uforetrygd": {
+    "years1": [
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "years3": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "total": [
+      9954,
+      10446,
+      11806,
+      13047,
+      14340,
+      15808,
+      18033,
+      20065,
+      20859,
+      21440,
+      21817,
+      21807,
+      22373,
+      22213
+    ],
+    "diag3": [
+      {
+        "label": "Aspergers syndrom",
+        "code": "F845",
+        "data": [
+          1174,
+          1469,
+          1737,
+          1889,
+          2020,
+          2106,
+          2141,
+          2320,
+          2437
+        ]
+      },
+      {
+        "label": "Lett psykisk utviklingshemming",
+        "code": "F70,F700-F709",
+        "data": [
+          1945,
+          2128,
+          2228,
+          2260,
+          2269,
+          2242,
+          2197,
+          2221,
+          2167
+        ]
+      },
+      {
+        "label": "Barneautisme",
+        "code": "F840",
+        "data": [
+          802,
+          903,
+          996,
+          1033,
+          1075,
+          1113,
+          1160,
+          1252,
+          1331
+        ]
+      },
+      {
+        "label": "Hyperkinetiske forstyrrelser (ADHD)",
+        "code": "F90 (F900-F909)",
+        "data": [
+          807,
+          923,
+          968,
+          988,
+          976,
+          989,
+          978,
+          1031,
+          1047
+        ]
+      },
+      {
+        "label": "Downs syndrom",
+        "code": "Q90 (Q900-Q909)",
+        "data": [
+          772,
+          795,
+          826,
+          838,
+          854,
+          903,
+          921,
+          958,
+          976
+        ]
+      },
+      {
+        "label": "Atypisk autisme",
+        "code": "F841",
+        "data": [
+          350,
+          424,
+          529,
+          579,
+          679,
+          764,
+          851,
+          919,
+          972
+        ]
+      },
+      {
+        "label": "Posttraumatisk stresslidelse (PTSD)",
+        "code": "F431",
+        "data": [
+          275,
+          407,
+          605,
+          681,
+          768,
+          850,
+          881,
+          926,
+          899
+        ]
+      },
+      {
+        "label": "Postviralt utmattelsessyndrom (ME)",
+        "code": "G933",
+        "data": [
+          234,
+          426,
+          614,
+          649,
+          739,
+          812,
+          850,
+          876,
+          826
+        ]
+      },
+      {
+        "label": "Uspesifisert gjennomgripende utviklingsforstyrrelse",
+        "code": "F849",
+        "data": [
+          174,
+          213,
+          262,
+          295,
+          363,
+          422,
+          468,
+          556,
+          637
+        ]
+      },
+      {
+        "label": "Blandet utviklingsforstyrrelse i spesifikke ferdigheter",
+        "code": "F83",
+        "data": [
+          252,
+          338,
+          408,
+          434,
+          444,
+          464,
+          480,
+          492,
+          493
+        ]
+      }
+    ],
+    "newME": [
+      116,
+      233,
+      268,
+      164,
+      207,
+      229,
+      214,
+      212,
+      160
+    ],
+    "groups1": [
+      {
+        "label": "Nervesystemet (inkl. ME)",
+        "data": [
+          1110,
+          1159,
+          1266,
+          1360,
+          1508,
+          1635,
+          1945,
+          2214,
+          2255,
+          2345,
+          2404,
+          2456,
+          2513,
+          2440
+        ]
+      },
+      {
+        "label": "Psykiske lidelser (total)",
+        "data": [
+          5865,
+          6281,
+          7320,
+          8319,
+          9358,
+          10544,
+          12216,
+          13715,
+          14259,
+          14723,
+          15048,
+          15007,
+          15438,
+          15378
+        ]
+      },
+      {
+        "label": "Nevroser/atferdsforstyrrelser",
+        "data": [
+          2556,
+          2756,
+          3293,
+          3831,
+          4433,
+          5206,
+          6332,
+          7415,
+          7883,
+          8357,
+          8719,
+          8913,
+          9412,
+          9647
+        ]
+      },
+      {
+        "label": "Personlighetsforstyrrelser",
+        "data": [
+          223,
+          261,
+          333,
+          380,
+          450,
+          554,
+          724,
+          936,
+          995,
+          1036,
+          1049,
+          1021,
+          982,
+          901
+        ]
+      },
+      {
+        "label": "Psykisk utviklingshemming",
+        "data": [
+          2378,
+          2518,
+          2765,
+          3061,
+          3358,
+          3554,
+          3730,
+          3810,
+          3806,
+          3767,
+          3691,
+          3570,
+          3547,
+          3404
+        ]
+      },
+      {
+        "label": "Medfødte misdannelser",
+        "data": [
+          1334,
+          1399,
+          1501,
+          1613,
+          1728,
+          1851,
+          1966,
+          2115,
+          2151,
+          2257,
+          2343,
+          2428,
+          2543,
+          2609
+        ]
+      },
+      {
+        "label": "Myalgi/fibromyalgi",
+        "data": [
+          26,
+          33,
+          45,
+          51,
+          51,
+          66,
+          89,
+          120,
+          124,
+          122,
+          125,
+          129,
+          140,
+          124
+        ]
+      },
+      {
+        "label": "Muskel-skjelett (total)",
+        "data": [
+          115,
+          114,
+          156,
+          186,
+          202,
+          251,
+          317,
+          382,
+          395,
+          391,
+          387,
+          352,
+          365,
+          340
+        ]
+      },
+      {
+        "label": "Skader/forgiftning",
+        "data": [
+          167,
+          188,
+          222,
+          230,
+          236,
+          244,
+          265,
+          281,
+          280,
+          288,
+          270,
+          259,
+          248,
+          222
+        ]
+      }
+    ]
+  },
+  "sykefravar": {
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "diag_rate": [
+      {
+        "group": "Allment og uspesifisert",
+        "code": "A04",
+        "label": "Slapphet/tretthet",
+        "data": [
+          13.87,
+          12.7,
+          13.02,
+          12.69,
+          13.26,
+          13.75,
+          17.35,
+          22.53,
+          25.52,
+          26.46,
+          24.45
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L01",
+        "label": "Nakke symptomer/plager",
+        "data": [
+          6.64,
+          5.78,
+          5.67,
+          5.15,
+          4.96,
+          5.28,
+          5.37,
+          4.85,
+          5.65,
+          6.04,
+          5.55
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L02",
+        "label": "Rygg symptomer/plager",
+        "data": [
+          8.53,
+          8.02,
+          7.2,
+          7.32,
+          8.04,
+          9.04,
+          10.22,
+          10.77,
+          12.79,
+          14.18,
+          13.92
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L03",
+        "label": "Korsrygg symptomer/plager",
+        "data": [
+          10.56,
+          9.62,
+          10.12,
+          9.67,
+          9.34,
+          9.8,
+          9.6,
+          8.71,
+          9.19,
+          9.19,
+          8.78
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L08",
+        "label": "Skulder symptomer/plager",
+        "data": [
+          9.22,
+          8.32,
+          8.09,
+          8.09,
+          8.18,
+          8.89,
+          9.4,
+          9.54,
+          11.59,
+          12.4,
+          11.86
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L15",
+        "label": "Kne symptomer/plager",
+        "data": [
+          6.85,
+          6.0,
+          5.89,
+          6.02,
+          6.22,
+          6.54,
+          7.3,
+          7.63,
+          8.6,
+          9.39,
+          9.58
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L18",
+        "label": "Utbredte muskelsmerter/fibromyalgi",
+        "data": [
+          7.91,
+          7.87,
+          8.51,
+          8.1,
+          8.24,
+          8.52,
+          8.59,
+          7.77,
+          7.92,
+          8.06,
+          7.77
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L84",
+        "label": "Ryggsyndrom uten smerteutstråling",
+        "data": [
+          8.6,
+          8.58,
+          8.79,
+          8.56,
+          8.64,
+          9.16,
+          8.88,
+          7.93,
+          8.47,
+          8.62,
+          8.14
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L86",
+        "label": "Ryggsyndrom med smerteutstråling",
+        "data": [
+          17.31,
+          17.48,
+          18.05,
+          17.18,
+          17.27,
+          18.35,
+          17.26,
+          15.52,
+          16.45,
+          16.62,
+          15.91
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L87",
+        "label": "Bursitt/tendinitt/synovitt IKA",
+        "data": [
+          9.11,
+          9.46,
+          9.87,
+          9.49,
+          9.5,
+          10.09,
+          9.97,
+          8.48,
+          9.05,
+          9.61,
+          9.12
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L92",
+        "label": "Skuldersyndrom",
+        "data": [
+          16.03,
+          15.99,
+          16.52,
+          15.42,
+          14.73,
+          15.28,
+          14.29,
+          11.79,
+          11.66,
+          11.53,
+          10.25
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L99",
+        "label": "Muskel-skjelettsykdom IKA",
+        "data": [
+          7.69,
+          7.88,
+          8.28,
+          7.77,
+          8.06,
+          8.26,
+          7.71,
+          7.34,
+          7.61,
+          7.76,
+          7.63
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P02",
+        "label": "Psykisk ubalanse situasjonsbetinget",
+        "data": [
+          23.04,
+          20.61,
+          20.8,
+          21.45,
+          21.95,
+          22.7,
+          24.98,
+          27.17,
+          32.6,
+          36.33,
+          37.53
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P03",
+        "label": "Depresjonsfølelse",
+        "data": [
+          5.6,
+          5.04,
+          4.12,
+          3.75,
+          3.71,
+          3.94,
+          4.54,
+          5.27,
+          6.98,
+          7.64,
+          7.22
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P29",
+        "label": "Psykiske symptomer/plager IKA",
+        "data": [
+          17.0,
+          14.85,
+          16.07,
+          16.12,
+          16.98,
+          17.31,
+          20.4,
+          22.7,
+          29.36,
+          34.57,
+          31.26
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P74",
+        "label": "Angstlidelse",
+        "data": [
+          4.5,
+          5.01,
+          5.19,
+          5.51,
+          6.58,
+          7.16,
+          6.71,
+          6.74,
+          7.52,
+          7.88,
+          7.19
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P76",
+        "label": "Depressiv lidelse",
+        "data": [
+          26.97,
+          29.39,
+          33.25,
+          33.26,
+          35.78,
+          37.23,
+          34.55,
+          33.41,
+          35.64,
+          35.39,
+          31.93
+        ]
+      },
+      {
+        "group": "Sykdom i fordøyelsesorganene",
+        "code": "D01",
+        "label": "Abdominalsmerte/krampe generell",
+        "data": [
+          3.28,
+          3.05,
+          2.91,
+          2.82,
+          2.76,
+          2.84,
+          2.98,
+          3.07,
+          3.49,
+          3.57,
+          3.32
+        ]
+      },
+      {
+        "group": "Sykdom i fordøyelsesorganene",
+        "code": "D73",
+        "label": "Gastroenteritt antatt infeksiøs",
+        "data": [
+          1.51,
+          1.5,
+          1.63,
+          1.72,
+          1.66,
+          0.92,
+          0.77,
+          1.63,
+          2.24,
+          2.07,
+          1.87
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R74",
+        "label": "Akutt øvre luftveisinfeksjon",
+        "data": [
+          6.84,
+          6.89,
+          7.48,
+          7.69,
+          8.2,
+          9.55,
+          10.52,
+          11.46,
+          12.72,
+          12.23,
+          11.68
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R80",
+        "label": "Influensa",
+        "data": [
+          4.96,
+          4.76,
+          4.27,
+          6.4,
+          4.11,
+          3.69,
+          1.03,
+          3.28,
+          4.69,
+          3.33,
+          5.85
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R83",
+        "label": "Luftveisinfeksjon IKA",
+        "data": [
+          1.66,
+          1.54,
+          1.57,
+          1.82,
+          2.16,
+          3.09,
+          2.68,
+          2.92,
+          3.7,
+          4.28,
+          4.28
+        ]
+      },
+      {
+        "group": "Sykdommer i nervesystemet",
+        "code": "N01",
+        "label": "Hodepine",
+        "data": [
+          4.41,
+          4.13,
+          4.15,
+          4.14,
+          4.12,
+          4.48,
+          5.15,
+          5.06,
+          5.13,
+          5.27,
+          4.99
+        ]
+      },
+      {
+        "group": "Sykdommer i nervesystemet",
+        "code": "N89",
+        "label": "Migrene",
+        "data": [
+          3.0,
+          3.37,
+          3.75,
+          4.07,
+          4.67,
+          4.96,
+          5.55,
+          5.51,
+          6.61,
+          7.5,
+          8.27
+        ]
+      }
+    ],
+    "diag_abs": [
+      {
+        "group": "Allment og uspesifisert",
+        "code": "A04",
+        "label": "Slapphet/tretthet",
+        "data": [
+          713757.34,
+          669015.09,
+          694278.33,
+          688994.29,
+          731703.76,
+          759380.41,
+          978058.92,
+          1304609.37,
+          1483706.69,
+          1555223.47,
+          1442918.02
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L01",
+        "label": "Nakke symptomer/plager",
+        "data": [
+          341615.63,
+          304498.25,
+          302413.05,
+          279364.04,
+          273449.54,
+          291784.14,
+          302825.95,
+          281061.9,
+          328566.94,
+          355332.81,
+          327547.61
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L02",
+        "label": "Rygg symptomer/plager",
+        "data": [
+          438596.04,
+          422404.26,
+          383691.41,
+          397636.08,
+          443547.39,
+          499073.82,
+          576077.98,
+          623433.94,
+          743843.36,
+          833579.4,
+          821611.24
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L03",
+        "label": "Korsrygg symptomer/plager",
+        "data": [
+          543495.35,
+          506694.75,
+          539736.42,
+          524890.62,
+          515062.41,
+          541503.73,
+          541163.29,
+          504339.96,
+          534177.07,
+          540058.73,
+          518316.86
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L08",
+        "label": "Skulder symptomer/plager",
+        "data": [
+          474545.86,
+          437931.68,
+          431492.33,
+          439163.81,
+          451215.25,
+          490878.03,
+          530037.0,
+          552331.66,
+          673873.36,
+          728932.26,
+          699661.15
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L15",
+        "label": "Kne symptomer/plager",
+        "data": [
+          352464.09,
+          315832.88,
+          314170.63,
+          327026.48,
+          343235.21,
+          361229.69,
+          411248.5,
+          441619.98,
+          500057.58,
+          552153.73,
+          565472.76
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L18",
+        "label": "Utbredte muskelsmerter/fibromyalgi",
+        "data": [
+          407015.92,
+          414463.82,
+          453842.47,
+          439783.56,
+          454733.59,
+          470488.87,
+          484090.43,
+          449962.59,
+          460641.97,
+          473864.54,
+          458805.48
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L84",
+        "label": "Ryggsyndrom uten smerteutstråling",
+        "data": [
+          442537.27,
+          452089.67,
+          468482.68,
+          464556.82,
+          476890.63,
+          505983.66,
+          500418.63,
+          459357.74,
+          492526.31,
+          506801.67,
+          480103.42
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L86",
+        "label": "Ryggsyndrom med smerteutstråling",
+        "data": [
+          890269.67,
+          920370.14,
+          962573.9,
+          932642.39,
+          952628.07,
+          1013458.83,
+          972836.03,
+          898760.43,
+          956339.15,
+          977034.83,
+          938959.68
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L87",
+        "label": "Bursitt/tendinitt/synovitt IKA",
+        "data": [
+          468891.89,
+          498195.42,
+          526359.39,
+          515427.05,
+          524250.23,
+          557429.17,
+          562147.61,
+          490728.03,
+          525956.09,
+          564690.51,
+          538412.21
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L92",
+        "label": "Skuldersyndrom",
+        "data": [
+          824802.46,
+          842226.6,
+          880988.16,
+          837239.93,
+          812861.58,
+          843745.92,
+          805299.95,
+          682802.1,
+          678173.67,
+          677972.23,
+          604769.43
+        ]
+      },
+      {
+        "group": "Muskel-/skjelettlidelser",
+        "code": "L99",
+        "label": "Muskel-skjelettsykdom IKA",
+        "data": [
+          395497.53,
+          414996.05,
+          441686.02,
+          422000.38,
+          444747.84,
+          456071.15,
+          434473.23,
+          425236.73,
+          442503.83,
+          456296.57,
+          450540.18
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P02",
+        "label": "Psykisk ubalanse situasjonsbetinget",
+        "data": [
+          1185086.48,
+          1085238.54,
+          1108929.25,
+          1164529.27,
+          1211252.09,
+          1254005.07,
+          1407948.97,
+          1573271.59,
+          1895758.29,
+          2135755.17,
+          2214433.22
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P03",
+        "label": "Depresjonsfølelse",
+        "data": [
+          287851.2,
+          265381.54,
+          219781.73,
+          203596.77,
+          204419.08,
+          217643.61,
+          255957.21,
+          305362.93,
+          406002.1,
+          449078.61,
+          426210.17
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P29",
+        "label": "Psykiske symptomer/plager IKA",
+        "data": [
+          874619.79,
+          781979.78,
+          856590.88,
+          875221.28,
+          936735.01,
+          956055.14,
+          1149989.35,
+          1314296.42,
+          1707331.67,
+          2031893.1,
+          1844579.83
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P74",
+        "label": "Angstlidelse",
+        "data": [
+          231643.69,
+          264009.94,
+          276555.17,
+          299085.61,
+          362794.65,
+          395578.56,
+          378241.3,
+          390110.12,
+          437412.69,
+          463134.66,
+          424187.85
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P76",
+        "label": "Depressiv lidelse",
+        "data": [
+          1387708.45,
+          1547932.95,
+          1772885.34,
+          1805774.22,
+          1973946.16,
+          2056545.61,
+          1947804.38,
+          1934482.89,
+          2072521.11,
+          2080221.42,
+          1884123.17
+        ]
+      },
+      {
+        "group": "Sykdom i fordøyelsesorganene",
+        "code": "D01",
+        "label": "Abdominalsmerte/krampe generell",
+        "data": [
+          168502.45,
+          160475.8,
+          155011.16,
+          152986.77,
+          152437.88,
+          156616.71,
+          168155.22,
+          177617.16,
+          202948.36,
+          209610.61,
+          195872.85
+        ]
+      },
+      {
+        "group": "Sykdom i fordøyelsesorganene",
+        "code": "D73",
+        "label": "Gastroenteritt antatt infeksiøs",
+        "data": [
+          77899.19,
+          79130.65,
+          86718.26,
+          93557.97,
+          91490.17,
+          51027.26,
+          43210.52,
+          94623.11,
+          130368.78,
+          121605.4,
+          110137.16
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R74",
+        "label": "Akutt øvre luftveisinfeksjon",
+        "data": [
+          351847.56,
+          362853.64,
+          398902.81,
+          417626.23,
+          452556.32,
+          527448.86,
+          593159.7,
+          663287.36,
+          739357.98,
+          718714.43,
+          689035.16
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R80",
+        "label": "Influensa",
+        "data": [
+          255013.85,
+          250813.92,
+          227809.99,
+          347499.53,
+          226549.11,
+          203961.45,
+          58060.38,
+          189825.3,
+          272668.72,
+          195843.06,
+          345464.69
+        ]
+      },
+      {
+        "group": "Sykdommer i luftveiene",
+        "code": "R83",
+        "label": "Luftveisinfeksjon IKA",
+        "data": [
+          85145.25,
+          80954.43,
+          83766.56,
+          99029.87,
+          119006.67,
+          170842.41,
+          151251.44,
+          169313.07,
+          215074.0,
+          251818.23,
+          252396.08
+        ]
+      },
+      {
+        "group": "Sykdommer i nervesystemet",
+        "code": "N01",
+        "label": "Hodepine",
+        "data": [
+          226795.18,
+          217389.26,
+          221311.16,
+          224850.07,
+          227505.63,
+          247444.75,
+          290525.19,
+          292991.31,
+          298239.0,
+          310045.31,
+          294242.94
+        ]
+      },
+      {
+        "group": "Sykdommer i nervesystemet",
+        "code": "N89",
+        "label": "Migrene",
+        "data": [
+          154175.01,
+          177278.7,
+          199690.24,
+          220829.78,
+          257717.93,
+          274213.35,
+          313047.05,
+          318971.82,
+          384350.06,
+          441067.71,
+          487758.47
+        ]
+      }
+    ],
+    "psyk": [
+      {
+        "group": "Psykiske lidelser",
+        "code": "P02",
+        "label": "Psykisk ubalanse situasjonsbetinget",
+        "data": [
+          23.04,
+          20.61,
+          20.8,
+          21.45,
+          21.95,
+          22.7,
+          24.98,
+          27.17,
+          32.6,
+          36.33,
+          37.53
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P03",
+        "label": "Depresjonsfølelse",
+        "data": [
+          5.6,
+          5.04,
+          4.12,
+          3.75,
+          3.71,
+          3.94,
+          4.54,
+          5.27,
+          6.98,
+          7.64,
+          7.22
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P29",
+        "label": "Psykiske symptomer/plager IKA",
+        "data": [
+          17.0,
+          14.85,
+          16.07,
+          16.12,
+          16.98,
+          17.31,
+          20.4,
+          22.7,
+          29.36,
+          34.57,
+          31.26
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P74",
+        "label": "Angstlidelse",
+        "data": [
+          4.5,
+          5.01,
+          5.19,
+          5.51,
+          6.58,
+          7.16,
+          6.71,
+          6.74,
+          7.52,
+          7.88,
+          7.19
+        ]
+      },
+      {
+        "group": "Psykiske lidelser",
+        "code": "P76",
+        "label": "Depressiv lidelse",
+        "data": [
+          26.97,
+          29.39,
+          33.25,
+          33.26,
+          35.78,
+          37.23,
+          34.55,
+          33.41,
+          35.64,
+          35.39,
+          31.93
+        ]
+      }
+    ]
+  }
+}
