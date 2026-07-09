@@ -1,0 +1,6 @@
+# Excel source files — downloaded locally, re-fetched by CI
+*.xlsx
+*.xls
+
+# macOS
+.DS_Store

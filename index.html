@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAV Diagnoseutvikling</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #1a1a2e; }
+
+  /* Header */
+  header { background: #003057; color: #fff; padding: 1.2rem 2rem 0; }
+  header h1 { font-size: 1.3rem; font-weight: 600; }
+  header p { font-size: 0.8rem; opacity: 0.7; margin-top: 0.2rem; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 0; margin-top: 1rem; }
+  .tab-btn { padding: 0.6rem 1.4rem; font-size: 0.85rem; font-weight: 500; border: none; cursor: pointer;
+             background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75);
+             border-radius: 6px 6px 0 0; margin-right: 3px; transition: all .15s; }
+  .tab-btn.active { background: #f5f6fa; color: #003057; }
+  .tab-btn:hover:not(.active) { background: rgba(255,255,255,0.2); }
+
+  /* Content */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .card { background: #fff; border-radius: 8px; padding: 1rem 1.2rem; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: .05em; color: #666; }
+  .card .value { font-size: 1.6rem; font-weight: 700; margin: .2rem 0; color: #003057; }
+  .card .sub { font-size: 0.78rem; color: #888; }
+  .card.red .value { color: #c0392b; }
+  .card.orange .value { color: #d35400; }
+
+  /* Sections */
+  .section { background: #fff; border-radius: 8px; padding: 1.2rem 1.4rem; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 1.5rem; }
+  .section h2 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .section .desc { font-size: 0.78rem; color: #666; margin-bottom: 1rem; }
+  .chart-wrap { position: relative; height: 300px; }
+  .chart-wrap.tall { height: 370px; }
+  .chart-wrap.short { height: 240px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  /* Toggles */
+  .toggle-group { display: flex; gap: 0.4rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+  .toggle-btn { font-size: 0.72rem; padding: 0.25rem 0.7rem; border-radius: 20px; border: 1.5px solid #ccc;
+                background: #fff; cursor: pointer; transition: all .15s; }
+  .toggle-btn.active { border-color: #003057; background: #003057; color: #fff; }
+
+  /* Callout */
+  .callout { background: #fff8e1; border-left: 3px solid #f59e0b; padding: 0.7rem 1rem;
+             border-radius: 0 6px 6px 0; margin-bottom: 1.2rem; font-size: 0.8rem; line-height: 1.5; color: #444; }
+  .note { font-size: 0.7rem; color: #999; margin-top: 0.7rem; line-height: 1.5; }
+
+  /* Source links */
+  .source { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.9rem; flex-wrap: wrap; }
+  .source span { font-size: 0.68rem; color: #aaa; text-transform: uppercase; letter-spacing: .04em; }
+  .source a { font-size: 0.72rem; color: #2980b9; text-decoration: none; padding: 0.15rem 0.55rem;
+              border: 1px solid #c8dff0; border-radius: 4px; background: #f0f7ff;
+              display: inline-flex; align-items: center; gap: 0.3rem; }
+  .source a:hover { background: #dbeeff; border-color: #2980b9; }
+  .source a::before { content: '↗'; font-size: 0.65rem; }
+
+  @media (max-width: 700px) {
+    .cards { grid-template-columns: 1fr 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NAV — Diagnoseutvikling</h1>
+  <p>Kilde: NAV statistikk &nbsp;·&nbsp; Data oppdateres vanligvis årlig</p>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('uforetrygd')">Uføretrygd (18–29 år)</button>
+    <button class="tab-btn" onclick="showTab('sykefravar')">Sykefravær</button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TAB 1: UFØRETRYGD
+     ═══════════════════════════════════════════════════════════ -->
+<div id="tab-uforetrygd" class="tab-panel active">
+<div class="container">
+
+  <div class="cards">
+    <div class="card red">
+      <div class="label">ME-mottakere 2025</div>
+      <div class="value">826</div>
+      <div class="sub">–50 fra 2024 (toppår: 876)</div>
+    </div>
+    <div class="card">
+      <div class="label">ME-vekst 2017–2025</div>
+      <div class="value">+253%</div>
+      <div class="sub">Fra 234 til 826 mottakere</div>
+    </div>
+    <div class="card">
+      <div class="label">Totalt uføretrygdede</div>
+      <div class="value">22 213</div>
+      <div class="sub">2,7 % av aldersgruppen</div>
+    </div>
+    <div class="card">
+      <div class="label">Total vekst 2012–2025</div>
+      <div class="value">+123%</div>
+      <div class="sub">Fra 9 954 til 22 213</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>ME og andre enkeltdiagnoser — utvikling 2017–2025</h2>
+    <div class="desc">Data fra Tabell 3. Bytt mellom faktiske antall og indeksert visning (2017 = 100) for å sammenligne veksttakt uavhengig av størrelse.</div>
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="uf-btn-abs" onclick="switchUfMode('abs')">Antall mottakere</button>
+      <button class="toggle-btn" id="uf-btn-idx" onclick="switchUfMode('idx')">Indeksert (2017 = 100)</button>
+    </div>
+    <div class="chart-wrap tall"><canvas id="chartUfCompare"></canvas></div>
+    <p class="note">ME (G933) = Postviralt utmattelsessyndrom (ICD-10). Hoppet 2017→2018 (234→426) skyldes trolig forbedret diagnosekoding. Merk: kun aldersgruppen 18–29 år.</p>
+    <div class="source">
+      <span>Kilde:</span>
+      <a href="https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/uforetrygd/diagnoser-uforetrygd" target="_blank">NAV statistikkside</a>
+      <a href="https://www.nav.no/_/attachment/download/9e5f09c6-ea4a-44f2-8ccc-4dd5bf6e4dbd:a50d63e8ccbd31f2bdb58858364b8d8654439b3c/Tabell%203_Uf%C3%B8rediagnoser_2025_De%20mest%20brukte.xlsx" target="_blank">Tabell 3 — Enkeltdiagnoser (xlsx)</a>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="section">
+      <h2>Vekst per diagnose 2017–2025</h2>
+      <div class="desc">ME er nest raskest voksende enkeltdiagnose.</div>
+      <div class="chart-wrap"><canvas id="chartUfGrowth"></canvas></div>
+      <div class="source">
+        <span>Kilde:</span>
+        <a href="https://www.nav.no/_/attachment/download/9e5f09c6-ea4a-44f2-8ccc-4dd5bf6e4dbd:a50d63e8ccbd31f2bdb58858364b8d8654439b3c/Tabell%203_Uf%C3%B8rediagnoser_2025_De%20mest%20brukte.xlsx" target="_blank">Tabell 3 — Enkeltdiagnoser (xlsx)</a>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Nye ME-mottakere per år</h2>
+      <div class="desc">Tilgang (nye mottakere med ME-diagnose). Topp i 2019, relativt stabil siden.</div>
+      <div class="chart-wrap"><canvas id="chartUfNew"></canvas></div>
+      <div class="source">
+        <span>Kilde:</span>
+        <a href="https://www.nav.no/_/attachment/download/77db5e01-2637-4ad1-84db-165157583bce:aa82971feb1cf0e12fb8a2f99e383870b79add9a/Tabell%202_Upnye_diagnoser_kj%C3%B8nn_%C3%A5r_2013-2025.xlsx" target="_blank">Tabell 2 — Nye mottakere (xlsx)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Diagnosegrupper 2012–2025 — indeksert (2012 = 100)</h2>
+    <div class="desc">Bredere grupper fra Tabell 1 gir kontekst tilbake til 2012. «Sykdommer i nervesystemet» inkluderer ME, MS og epilepsi samlet.</div>
+    <div class="chart-wrap tall"><canvas id="chartUfGroups"></canvas></div>
+    <div class="source">
+      <span>Kilde:</span>
+      <a href="https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/uforetrygd/diagnoser-uforetrygd" target="_blank">NAV statistikkside</a>
+      <a href="https://www.nav.no/_/attachment/download/381d9f6d-106f-40c3-ba2e-82779af9c418:37a6ed86af559a6607428b1f5ac93e567332c3a0/Tabell%201_Upantall_diagnoser_kj%C3%B8nn_%C3%A5r_2012-2025.xlsx" target="_blank">Tabell 1 — Diagnosegrupper (xlsx)</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TAB 2: SYKEFRAVÆR
+     ═══════════════════════════════════════════════════════════ -->
+<div id="tab-sykefravar" class="tab-panel">
+<div class="container">
+
+  <div class="callout">
+    <strong>Kodeverket er annerledes her:</strong> Sykefravær bruker ICPC-koder, ikke ICD-10. Det finnes ingen dedikert ME/CFS-kode i ICPC.
+    Den nærmeste er <strong>A04 Slapphet/tretthet</strong> — men det er en bred kategori som inkluderer all slags utmattelse, ikke bare ME.
+    Diagnosen kan også delvis fanges opp i P29 (psykiske symptomer IKA) hos noen leger.
+  </div>
+
+  <div class="cards">
+    <div class="card orange">
+      <div class="label">A04 Slapphet/tretthet 2025</div>
+      <div class="value">24,5</div>
+      <div class="sub">dagsverk tapt per 10 000 avtalte</div>
+    </div>
+    <div class="card">
+      <div class="label">A04-vekst 2015–2025</div>
+      <div class="value">+76%</div>
+      <div class="sub">Fra 13,9 til 24,5 per 10 000</div>
+    </div>
+    <div class="card">
+      <div class="label">Totalt sykefravær 2025</div>
+      <div class="value">554,0</div>
+      <div class="sub">dagsverk per 10 000 avtalte</div>
+    </div>
+    <div class="card">
+      <div class="label">Raskest voksende 2015–25</div>
+      <div class="value">Migrene</div>
+      <div class="sub">N89: +177% (3,0 → 8,3)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>A04 (tretthet/utmattelse) og andre enkeltdiagnoser — utvikling 2015–2025</h2>
+    <div class="desc">Tapte dagsverk per 10 000 avtalte dagsverk (normalisert for sysselsettingsvekst). Bytt mellom visninger.</div>
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="sf-btn-rate" onclick="switchSfMode('rate')">Rate per 10 000</button>
+      <button class="toggle-btn" id="sf-btn-idx" onclick="switchSfMode('idx')">Indeksert (2015 = 100)</button>
+      <button class="toggle-btn" id="sf-btn-abs" onclick="switchSfMode('abs')">Tapte dagsverk (1 000)</button>
+    </div>
+    <div class="chart-wrap tall"><canvas id="chartSfCompare"></canvas></div>
+    <p class="note">A04 inkluderer all trøtthet/utmattelse, ikke kun ME. COVID-19 (R992) er utelatt for å ikke dominere skalaen — toppet på 37,4 i 2021.</p>
+    <div class="source">
+      <span>Kilde:</span>
+      <a href="https://www.nav.no/no/nav-og-samfunn/statistikk/sykefravar-statistikk/sykefravaersstatistikk-arsstatistikk" target="_blank">NAV statistikkside</a>
+      <a href="https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx" target="_blank">SYFRA 2301 — Enkeltdiagnoser (xlsx)</a>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="section">
+      <h2>Vekst per diagnose 2015–2025</h2>
+      <div class="desc">Rate per 10 000 avtalte dagsverk. Migrene og psykiske lidelser vokser raskest.</div>
+      <div class="chart-wrap"><canvas id="chartSfGrowth"></canvas></div>
+      <div class="source">
+        <span>Kilde:</span>
+        <a href="https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx" target="_blank">SYFRA 2301 — Enkeltdiagnoser (xlsx)</a>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Psykiske lidelser detaljert</h2>
+      <div class="desc">P-gruppen samlet vs. enkeltdiagnoser. Sterk vekst etter 2019.</div>
+      <div class="chart-wrap"><canvas id="chartSfPsyk"></canvas></div>
+      <div class="source">
+        <span>Kilde:</span>
+        <a href="https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx" target="_blank">SYFRA 2301 — Enkeltdiagnoser (xlsx)</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════
+
+// ── Uføretrygd ──────────────────────────────────────────
+const ufYears3 = [2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const ufDiag = [
+  { label:'ME — Postviralt utmattelsessyndrom', data:[234,426,614,649,739,812,850,876,826], color:'#c0392b', w:2.5, r:4 },
+  { label:'PTSD',                               data:[275,407,605,681,768,850,881,926,899], color:'#e67e22', w:1.5, r:2 },
+  { label:'Atypisk autisme (F841)',             data:[350,424,529,579,679,764,851,919,972], color:'#8e44ad', w:1.5, r:2 },
+  { label:'Aspergers syndrom',                  data:[1174,1469,1737,1889,2020,2106,2141,2320,2437], color:'#2980b9', w:1.5, r:2 },
+  { label:'Barneautisme',                       data:[802,903,996,1033,1075,1113,1160,1252,1331], color:'#27ae60', w:1.5, r:2 },
+  { label:'ADHD',                               data:[807,923,968,988,976,989,978,1031,1047], color:'#16a085', w:1.5, r:2 },
+  { label:'Downs syndrom',                      data:[772,795,826,838,854,903,921,958,976], color:'#7f8c8d', w:1.5, r:2 },
+  { label:'Lett psyk. utvikl.hemming',          data:[1945,2128,2228,2260,2269,2242,2197,2221,2167], color:'#bdc3c7', w:1.5, r:2 },
+  { label:'Uspesifisert utv.forstyrr. (F849)', data:[174,213,262,295,363,422,468,556,637], color:'#f39c12', w:1.5, r:2 },
+];
+const ufNewME = [116,233,268,164,207,229,214,212,160];
+const ufYears1 = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const ufGroups = [
+  { label:'Nervesystemet (inkl. ME)',    data:[1110,1159,1266,1360,1508,1635,1945,2214,2255,2345,2404,2456,2513,2440], color:'#c0392b' },
+  { label:'Psykiske lidelser (total)',   data:[5865,6281,7320,8319,9358,10544,12216,13715,14259,14723,15048,15007,15438,15378], color:'#2980b9' },
+  { label:'Nevroser/atferdsforstyrrelser',data:[2556,2756,3293,3831,4433,5206,6332,7415,7883,8357,8719,8913,9412,9647], color:'#8e44ad' },
+  { label:'Personlighetsforstyrrelser', data:[223,261,333,380,450,554,724,936,995,1036,1049,1021,982,901], color:'#e67e22' },
+  { label:'Medfødte misdannelser',       data:[1334,1399,1501,1613,1728,1851,1966,2115,2151,2257,2343,2428,2543,2609], color:'#27ae60' },
+  { label:'Psykisk utviklingshemming',   data:[2378,2518,2765,3061,3358,3554,3730,3810,3806,3767,3691,3570,3547,3404], color:'#7f8c8d' },
+  { label:'Myalgi/fibromyalgi',          data:[26,33,45,51,51,66,89,120,124,122,125,129,140,124], color:'#f39c12' },
+  { label:'Muskel-skjelett (total)',     data:[115,114,156,186,202,251,317,382,395,391,387,352,365,340], color:'#16a085' },
+  { label:'Skader/forgiftning',          data:[167,188,222,230,236,244,265,281,280,288,270,259,248,222], color:'#bdc3c7' },
+];
+
+// ── Sykefravær ──────────────────────────────────────────
+const sfYears = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+// Rate per 10,000 avtalte dagsverk (all, kvinner+menn)
+const sfDiag = [
+  { label:'A04 Slapphet/tretthet',              code:'A04', data:[13.9,12.7,13.0,12.7,13.3,13.7,17.3,22.5,25.5,26.5,24.5], color:'#c0392b', w:2.5, r:4 },
+  { label:'N89 Migrene',                        code:'N89', data:[3.0,3.4,3.7,4.1,4.7,5.0,5.6,5.5,6.6,7.5,8.3],   color:'#9b59b6', w:1.5, r:2 },
+  { label:'P02 Psykisk ubalanse',               code:'P02', data:[23.0,20.6,20.8,21.5,22.0,22.7,25.0,27.2,32.6,36.3,37.5], color:'#2980b9', w:1.5, r:2 },
+  { label:'P29 Psykiske symptomer IKA',         code:'P29', data:[17.0,14.8,16.1,16.1,17.0,17.3,20.4,22.7,29.4,34.6,31.3], color:'#8e44ad', w:1.5, r:2 },
+  { label:'P76 Depressiv lidelse',              code:'P76', data:[27.0,29.4,33.3,33.3,35.8,37.2,34.6,33.4,35.6,35.4,31.9], color:'#e67e22', w:1.5, r:2 },
+  { label:'L02 Rygg symptomer',                 code:'L02', data:[8.5,8.0,7.2,7.3,8.0,9.0,10.2,10.8,12.8,14.2,13.9],  color:'#27ae60', w:1.5, r:2 },
+  { label:'L18 Fibromyalgi/muskelsmerter',      code:'L18', data:[7.9,7.9,8.5,8.1,8.2,8.5,8.6,7.8,7.9,8.1,7.8],   color:'#16a085', w:1.5, r:2 },
+  { label:'L86 Ryggsyndrom m/smerteutstråling', code:'L86', data:[17.3,17.5,18.1,17.2,17.3,18.3,17.3,15.5,16.4,16.6,15.9], color:'#7f8c8d', w:1.5, r:2 },
+  { label:'L92 Skuldersyndrom',                 code:'L92', data:[16.0,16.0,16.5,15.4,14.7,15.3,14.3,11.8,11.7,11.5,10.2], color:'#bdc3c7', w:1.5, r:2 },
+  { label:'R74 Akutt luftveisinfeksjon',        code:'R74', data:[6.8,6.9,7.5,7.7,8.2,9.5,10.5,11.5,12.7,12.2,11.7], color:'#95a5a6', w:1.5, r:2 },
+];
+// Absolute (1000s)
+const sfAbs = [
+  { label:'A04 Slapphet/tretthet',              data:[714,669,694,689,732,759,978,1305,1484,1555,1443] },
+  { label:'N89 Migrene',                        data:[154,177,200,221,258,274,313,319,384,441,488] },
+  { label:'P02 Psykisk ubalanse',               data:[1185,1085,1109,1165,1211,1254,1408,1573,1896,2136,2214] },
+  { label:'P29 Psykiske symptomer IKA',         data:[875,782,857,875,937,956,1150,1314,1707,2032,1845] },
+  { label:'P76 Depressiv lidelse',              data:[1388,1548,1773,1806,1974,2057,1948,1934,2073,2080,1884] },
+  { label:'L02 Rygg symptomer',                 data:[439,422,384,398,444,499,576,623,744,834,822] },
+  { label:'L18 Fibromyalgi/muskelsmerter',      data:[407,414,454,440,455,470,484,450,461,474,459] },
+  { label:'L86 Ryggsyndrom m/smerteutstråling', data:[890,920,963,933,953,1013,973,899,956,977,939] },
+  { label:'L92 Skuldersyndrom',                 data:[825,842,881,837,813,844,805,683,678,678,605] },
+  { label:'R74 Akutt luftveisinfeksjon',        data:[352,363,399,418,453,527,593,663,739,719,689] },
+];
+const sfPsyk = [
+  { label:'P02 Psykisk ubalanse',       data:[23.0,20.6,20.8,21.5,22.0,22.7,25.0,27.2,32.6,36.3,37.5], color:'#2980b9' },
+  { label:'P29 Psykiske symptomer IKA', data:[17.0,14.8,16.1,16.1,17.0,17.3,20.4,22.7,29.4,34.6,31.3], color:'#8e44ad' },
+  { label:'P76 Depressiv lidelse',      data:[27.0,29.4,33.3,33.3,35.8,37.2,34.6,33.4,35.6,35.4,31.9], color:'#e67e22' },
+  { label:'P74 Angstlidelse',           data:[4.5,5.0,5.2,5.5,6.6,7.2,6.7,6.7,7.5,7.9,7.2],            color:'#e74c3c' },
+  { label:'P03 Depresjonsfølelse',      data:[5.6,5.0,4.1,3.8,3.7,3.9,4.5,5.3,7.0,7.6,7.2],            color:'#f39c12' },
+];
+
+// ═══════════════════════════════════════════════════════
+// SHARED DEFAULTS
+// ═══════════════════════════════════════════════════════
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+Chart.defaults.font.size = 11;
+
+function lineDs(d, mode, base) {
+  return {
+    label: d.label,
+    data: mode === 'idx' ? d.data.map(v => v === null ? null : Math.round((v / (base||d.data[0]))*100)) : d.data,
+    borderColor: d.color,
+    backgroundColor: 'transparent',
+    borderWidth: d.w || 1.5,
+    pointRadius: d.r || 2,
+    pointHoverRadius: 5,
+    tension: 0.3,
+    fill: false,
+    spanGaps: true,
+  };
+}
+
+// ═══════════════════════════════════════════════════════
+// UFØRETRYGD CHARTS
+// ═══════════════════════════════════════════════════════
+let ufMode = 'abs';
+function ufDs(m) {
+  return ufDiag.map(d => ({
+    ...lineDs(d, m),
+    data: m === 'abs' ? d.data : d.data.map(v => Math.round((v/d.data[0])*100)),
+  }));
+}
+const chartUfCompare = new Chart(document.getElementById('chartUfCompare'), {
+  type: 'line',
+  data: { labels: ufYears3, datasets: ufDs('abs') },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'right', labels: { boxWidth: 11, padding: 9, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}${ufMode==='idx'?' (idx)':''}` }},
+    },
+    scales: {
+      x: { grid: { color: '#eee' } },
+      y: { grid: { color: '#eee' }, title: { display: true, text: 'Antall mottakere' } },
+    },
+  }
+});
+function switchUfMode(m) {
+  ufMode = m;
+  chartUfCompare.data.datasets = ufDs(m);
+  chartUfCompare.options.scales.y.title.text = m==='abs' ? 'Antall mottakere' : 'Indeks (2017=100)';
+  chartUfCompare.update();
+  document.getElementById('uf-btn-abs').classList.toggle('active', m==='abs');
+  document.getElementById('uf-btn-idx').classList.toggle('active', m==='idx');
+}
+
+const ufGrowthData = ufDiag
+  .map(d => ({ label: d.label.replace(' — Postviralt utmattelsessyndrom','').replace(' (F841)','').replace(' (F849)',''),
+               g: Math.round(((d.data[d.data.length-1]-d.data[0])/d.data[0])*100), color: d.color }))
+  .sort((a,b) => b.g-a.g);
+new Chart(document.getElementById('chartUfGrowth'), {
+  type: 'bar',
+  data: { labels: ufGrowthData.map(d=>d.label), datasets: [{
+    data: ufGrowthData.map(d=>d.g),
+    backgroundColor: ufGrowthData.map(d=>d.color+'cc'),
+    borderColor: ufGrowthData.map(d=>d.color),
+    borderWidth: 1.5, borderRadius: 4,
+  }]},
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` +${ctx.parsed.x}% (2017–2025)` }}},
+    scales: { x: { grid: { color:'#eee' }, title: { display:true, text:'Vekst (%)' }}, y: { grid: { display:false }, ticks: { font:{size:10} }}},
+  }
+});
+new Chart(document.getElementById('chartUfNew'), {
+  type: 'bar',
+  data: { labels: ufYears3, datasets: [{ label:'Nye ME-mottakere', data: ufNewME,
+    backgroundColor:'#c0392b88', borderColor:'#c0392b', borderWidth:1.5, borderRadius:4 }]},
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y} nye`}}},
+    scales: { x:{grid:{color:'#eee'}}, y:{grid:{color:'#eee'}, beginAtZero:true}},
+  }
+});
+new Chart(document.getElementById('chartUfGroups'), {
+  type: 'line',
+  data: { labels: ufYears1, datasets: ufGroups.map(g => ({
+    label: g.label,
+    data: g.data.map(v => Math.round((v/g.data[0])*100)),
+    borderColor: g.color, backgroundColor: 'transparent',
+    borderWidth: g.label.includes('Nervesystemet') ? 2.5 : 1.5,
+    pointRadius: g.label.includes('Nervesystemet') ? 4 : 2,
+    tension: 0.3,
+  }))},
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position:'right', labels:{ boxWidth:11, padding:8, font:{size:10} }},
+      tooltip: { callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} (idx)` }}},
+    scales: { x:{grid:{color:'#eee'}}, y:{grid:{color:'#eee'}, title:{display:true, text:'Indeks (2012=100)'}}},
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// SYKEFRAVÆR CHARTS
+// ═══════════════════════════════════════════════════════
+let sfMode = 'rate';
+
+function sfCompareDs(m) {
+  return sfDiag.map((d, i) => {
+    let vals;
+    if (m === 'rate') vals = d.data;
+    else if (m === 'idx') vals = d.data.map(v => Math.round((v/d.data[0])*100));
+    else vals = sfAbs[i].data;
+    return {
+      label: d.label, data: vals, borderColor: d.color, backgroundColor: 'transparent',
+      borderWidth: d.w, pointRadius: d.r, pointHoverRadius: 5, tension: 0.3, fill: false,
+    };
+  });
+}
+const sfYLabel = { rate: 'Tapte dagsverk per 10 000 avtalte', idx: 'Indeks (2015=100)', abs: 'Tapte dagsverk (1 000)' };
+const chartSfCompare = new Chart(document.getElementById('chartSfCompare'), {
+  type: 'line',
+  data: { labels: sfYears, datasets: sfCompareDs('rate') },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position:'right', labels:{ boxWidth:11, padding:9, font:{size:10} }},
+      tooltip: { callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` }},
+    },
+    scales: {
+      x:{grid:{color:'#eee'}},
+      y:{grid:{color:'#eee'}, title:{display:true, text: sfYLabel['rate']}},
+    },
+  }
+});
+function switchSfMode(m) {
+  sfMode = m;
+  chartSfCompare.data.datasets = sfCompareDs(m);
+  chartSfCompare.options.scales.y.title.text = sfYLabel[m];
+  chartSfCompare.update();
+  ['rate','idx','abs'].forEach(k => document.getElementById('sf-btn-'+k).classList.toggle('active', k===m));
+}
+
+// Growth chart (by rate per 10,000)
+const sfGrowth = sfDiag
+  .map(d => ({ label: d.label.replace(/^[A-Z]\d+ /,''), g: Math.round(((d.data[d.data.length-1]-d.data[0])/d.data[0])*100), color: d.color, pos: d.data[d.data.length-1] > d.data[0] }))
+  .sort((a,b) => b.g-a.g);
+new Chart(document.getElementById('chartSfGrowth'), {
+  type: 'bar',
+  data: { labels: sfGrowth.map(d=>d.label), datasets: [{
+    data: sfGrowth.map(d=>d.g),
+    backgroundColor: sfGrowth.map(d => d.g >= 0 ? d.color+'cc' : '#e74c3ccc'),
+    borderColor: sfGrowth.map(d => d.g >= 0 ? d.color : '#e74c3c'),
+    borderWidth: 1.5, borderRadius: 4,
+  }]},
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.x > 0 ? '+':''}${ctx.parsed.x}% (2015–2025)` }}},
+    scales: {
+      x:{ grid:{color:'#eee'}, title:{display:true, text:'Vekst (%)'} },
+      y:{ grid:{display:false}, ticks:{font:{size:9.5}} },
+    },
+  }
+});
+
+// Psykiske lidelser detail
+new Chart(document.getElementById('chartSfPsyk'), {
+  type: 'line',
+  data: { labels: sfYears, datasets: sfPsyk.map(d => ({
+    label: d.label, data: d.data, borderColor: d.color, backgroundColor: 'transparent',
+    borderWidth: 1.8, pointRadius: 2.5, tension: 0.3, fill: false,
+  }))},
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode:'index', intersect:false },
+    plugins: { legend:{ position:'bottom', labels:{ boxWidth:11, padding:8, font:{size:10} }},
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` }}},
+    scales: {
+      x:{grid:{color:'#eee'}},
+      y:{grid:{color:'#eee'}, title:{display:true, text:'Tapte dagsverk per 10 000'}},
+    },
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════════════════
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+  // Resize charts after tab switch (Chart.js needs this)
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+}
+</script>
+</body>
+</html>
