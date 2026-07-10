@@ -93,12 +93,12 @@
 
   <div class="cards">
     <div class="card red">
-      <div class="label">ME-mottakere (siste år)</div>
+      <div class="label">G933 Postviralt utmattelsessyndrom</div>
       <div class="value" id="kpi-me-count">—</div>
       <div class="sub" id="kpi-me-sub">laster…</div>
     </div>
     <div class="card">
-      <div class="label">ME-vekst</div>
+      <div class="label">G933 vekst 2017–2025</div>
       <div class="value" id="kpi-me-growth">—</div>
       <div class="sub" id="kpi-me-growth-sub">laster…</div>
     </div>
@@ -115,14 +115,14 @@
   </div>
 
   <div class="section">
-    <h2>ME og andre enkeltdiagnoser — utvikling 2017–2025</h2>
+    <h2>Enkeltdiagnoser — utvikling 2017–2025</h2>
     <div class="desc">Data fra Tabell 3. Bytt mellom faktiske antall og indeksert visning (2017 = 100) for å sammenligne veksttakt uavhengig av størrelse.</div>
     <div class="toggle-group">
       <button class="toggle-btn active" id="uf-btn-abs" onclick="switchUfMode('abs')">Antall mottakere</button>
       <button class="toggle-btn" id="uf-btn-idx" onclick="switchUfMode('idx')">Indeksert (2017 = 100)</button>
     </div>
     <div class="chart-wrap tall"><canvas id="chartUfCompare"></canvas></div>
-    <p class="note">ME (G933) = Postviralt utmattelsessyndrom (ICD-10). Hoppet 2017→2018 (234→426) skyldes trolig forbedret diagnosekoding. Merk: kun aldersgruppen 18–29 år.</p>
+    <p class="note">G933 = Postviralt utmattelsessyndrom (ICD-10). Hopp 2017→2018 (234→426) skyldes trolig forbedret diagnosekoding. Merk: kun aldersgruppen 18–29 år.</p>
     <div class="source">
       <span>Kilde:</span>
       <a href="https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/uforetrygd/diagnoser-uforetrygd" target="_blank">NAV statistikkside</a>
@@ -133,7 +133,7 @@
   <div class="grid2">
     <div class="section">
       <h2>Vekst per diagnose 2017–2025</h2>
-      <div class="desc">ME er nest raskest voksende enkeltdiagnose.</div>
+      <div class="desc">Prosentvis vekst per diagnose, 2017 til 2025.</div>
       <div class="chart-wrap"><canvas id="chartUfGrowth"></canvas></div>
       <div class="source">
         <span>Kilde:</span>
@@ -141,8 +141,8 @@
       </div>
     </div>
     <div class="section">
-      <h2>Nye ME-mottakere per år</h2>
-      <div class="desc">Tilgang (nye mottakere med ME-diagnose). Topp i 2019, relativt stabil siden.</div>
+      <h2>Nye mottakere per år — G933</h2>
+      <div class="desc">Tilgang (nye mottakere med diagnose G933 Postviralt utmattelsessyndrom).</div>
       <div class="chart-wrap"><canvas id="chartUfNew"></canvas></div>
       <div class="source">
         <span>Kilde:</span>
@@ -153,7 +153,7 @@
 
   <div class="section">
     <h2>Diagnosegrupper 2012–2025 — indeksert (2012 = 100)</h2>
-    <div class="desc">Bredere grupper fra Tabell 1 gir kontekst tilbake til 2012. «Sykdommer i nervesystemet» inkluderer ME, MS og epilepsi samlet.</div>
+    <div class="desc">Bredere diagnosegrupper fra Tabell 1 gir kontekst tilbake til 2012.</div>
     <div class="chart-wrap tall"><canvas id="chartUfGroups"></canvas></div>
     <div class="source">
       <span>Kilde:</span>
@@ -172,9 +172,7 @@
 <div class="container">
 
   <div class="callout">
-    <strong>Kodeverket er annerledes her:</strong> Sykefravær bruker ICPC-koder, ikke ICD-10. Det finnes ingen dedikert ME/CFS-kode i ICPC.
-    Den nærmeste er <strong>A04 Slapphet/tretthet</strong> — men det er en bred kategori som inkluderer all slags utmattelse, ikke bare ME.
-    Diagnosen kan også delvis fanges opp i P29 (psykiske symptomer IKA) hos noen leger.
+    <strong>Merk kodeverket:</strong> Sykefravær bruker ICPC-2 koder, ikke ICD-10. A04 (Slapphet/tretthet) er en bred kategori som inkluderer all slags utmattelse.
   </div>
 
   <div class="cards">
@@ -201,7 +199,7 @@
   </div>
 
   <div class="section">
-    <h2>A04 (tretthet/utmattelse) og andre enkeltdiagnoser — utvikling 2015–2025</h2>
+    <h2>Enkeltdiagnoser — utvikling 2015–2025</h2>
     <div class="desc">Tapte dagsverk per 10 000 avtalte dagsverk (normalisert for sysselsettingsvekst). Bytt mellom visninger.</div>
     <div class="toggle-group">
       <button class="toggle-btn active" id="sf-btn-rate" onclick="switchSfMode('rate')">Rate per 10 000</button>
@@ -209,7 +207,7 @@
       <button class="toggle-btn" id="sf-btn-abs" onclick="switchSfMode('abs')">Tapte dagsverk (1 000)</button>
     </div>
     <div class="chart-wrap tall"><canvas id="chartSfCompare"></canvas></div>
-    <p class="note">A04 inkluderer all trøtthet/utmattelse, ikke kun ME. COVID-19 (R992) er utelatt for å ikke dominere skalaen — toppet på 37,4 i 2021.</p>
+    <p class="note">COVID-19 (R992) er utelatt for å ikke dominere skalaen — toppet på 37,4 i 2021.</p>
     <div class="source">
       <span>Kilde:</span>
       <a href="https://www.nav.no/no/nav-og-samfunn/statistikk/sykefravar-statistikk/sykefravaersstatistikk-arsstatistikk" target="_blank">NAV statistikkside</a>
@@ -256,7 +254,7 @@
     <div class="card red">
       <div class="label">A04 Slapphet/tretthet</div>
       <div class="value" id="kpi-aap-a04">—</div>
-      <div class="sub" id="kpi-aap-a04-sub">ME-proxy (ICPC A04)</div>
+      <div class="sub" id="kpi-aap-a04-sub">av alle AAP-mottakere</div>
     </div>
     <div class="card">
       <div class="label">Største diagnose</div>
@@ -272,7 +270,7 @@
 
   <div class="section">
     <h2>Topp 25 enkeltdiagnoser blant AAP-mottakere</h2>
-    <div class="desc">Øyeblikksbilde per siste tilgjengelige måned. ICPC-2 koder. A04 (Slapphet/tretthet) er nærmeste proxy for ME/CFS i dette kodeverket — ingen G933-ekvivalent finnes i AAP-statistikken.</div>
+    <div class="desc">Øyeblikksbilde per siste tilgjengelige måned. ICPC-2 koder.</div>
     <div class="chart-wrap" style="height:640px"><canvas id="chartAap"></canvas></div>
     <p class="note">Viser de 10 mest vanlige per diagnosehovedgruppe. Diagnoser med færre enn 10 mottakere er utelatt av personvernhensyn (§ 7-1 Statistikkloven).</p>
     <div class="source">
@@ -423,7 +421,7 @@ function renderUforetrygd(uf) {
     ...d,
     ...ufStyleFor(d.code),
     label: d.label
-      .replace('Postviralt utmattelsessyndrom (ME)', 'ME — Postviralt utmattelsessyndrom')
+      .replace('Postviralt utmattelsessyndrom (ME)', 'Postviralt utmattelsessyndrom')
       .replace('Hyperkinetiske forstyrrelser (ADHD)', 'ADHD')
       .replace('Posttraumatisk stresslidelse (PTSD)', 'PTSD')
       .replace('Uspesifisert gjennomgripende utviklingsforstyrrelse', 'Uspesifisert utv.forstyrr.')
@@ -499,7 +497,7 @@ function renderUforetrygd(uf) {
   // ── Chart: new ME per year ───────────────────────────
   new Chart(document.getElementById('chartUfNew'), {
     type:'bar',
-    data:{ labels: uf.years3, datasets:[{ label:'Nye ME-mottakere', data: uf.newME,
+    data:{ labels: uf.years3, datasets:[{ label:'Nye mottakere (G933)', data: uf.newME,
       backgroundColor:'#c0392b88', borderColor:'#c0392b', borderWidth:1.5, borderRadius:4 }]},
     options:{
       responsive:true, maintainAspectRatio:false,
