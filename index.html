@@ -295,6 +295,19 @@ window.onerror = function(msg, src, line, col, err) {
 // STYLE CONFIG  (colours/weights — kept here, not in data.json)
 // ═══════════════════════════════════════════════════════
 
+// AAP diagnosis groups
+const AAP_GROUP_COLOR = {
+  'Psykiske lidelser':            '#2980b9',
+  'Muskel- og skjelettlidelser':  '#16a085',
+  'Allment':                      '#c0392b',
+  'Sykdommer i nervesystemet':    '#8e44ad',
+  'Kreft':                        '#7f8c8d',
+  'Hjerte- og karsykdommer':      '#e74c3c',
+  'Sykdom i fordøyelsesorganene': '#e67e22',
+  'Sykdommer i luftveiene':       '#95a5a6',
+  'Andre lidelser':               '#bdc3c7',
+};
+
 // Uføretrygd individual diagnoses: keyed by ICD code fragment
 const UF_STYLE = {
   'G933': { color:'#c0392b', w:2.5, r:4 },   // ME — highlight
@@ -652,17 +665,6 @@ function switchSfMode(m) {
 // ═══════════════════════════════════════════════════════
 // AAP
 // ═══════════════════════════════════════════════════════
-const AAP_GROUP_COLOR = {
-  'Psykiske lidelser':            '#2980b9',
-  'Muskel- og skjelettlidelser':  '#16a085',
-  'Allment':                      '#c0392b',
-  'Sykdommer i nervesystemet':    '#8e44ad',
-  'Kreft':                        '#7f8c8d',
-  'Hjerte- og karsykdommer':      '#e74c3c',
-  'Sykdom i fordøyelsesorganene': '#e67e22',
-  'Sykdommer i luftveiene':       '#95a5a6',
-  'Andre lidelser':               '#bdc3c7',
-};
 
 function renderAAP(aap) {
   const top25 = aap.diags.slice(0, 25);
