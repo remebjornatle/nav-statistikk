@@ -23,6 +23,10 @@ SF_PAGE = (
     f"{BASE}/no/nav-og-samfunn/statistikk/"
     "sykefravar-statistikk/sykefravaersstatistikk-arsstatistikk"
 )
+AAP_PAGE = (
+    f"{BASE}/no/nav-og-samfunn/statistikk/"
+    "aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/arbeidsavklaringspenger"
+)
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -215,13 +219,80 @@ def parse_sykefravar(wb):
     }
 
 
+# ── AAP ──────────────────────────────────────────────────────────────────────
+
+def parse_aap(wb):
+    KNOWN_GROUPS = {
+        'Allment', 'Andre lidelser', 'Hjerte- og karsykdommer',
+        'Muskel- og skjelettlidelser', 'Psykiske lidelser',
+        'Sykdom i fordøyelsesorganene', 'Sykdommer i luftveiene',
+        'Sykdommer i nervesystemet', 'Kreft',
+    }
+
+    # ── Group totals from Hovedgruppe sheet ──────────────────────────────────
+    ws_h = wb['1.Hovedgruppe']
+    rows_h = list(ws_h.iter_rows(values_only=True))
+    hdr_h = next(r for r in rows_h if r[2] == 'Jan')
+    mai_col_h = next(i for i, v in enumerate(hdr_h) if v == 'Mai')
+    total = None
+    groups = []
+    for row in rows_h:
+        if not isinstance(row[1], str):
+            continue
+        label = row[1].strip()
+        val = row[mai_col_h]
+        if not isinstance(val, (int, float)):
+            continue
+        if label == 'I alt':
+            total = int(val)
+        elif label in KNOWN_GROUPS:
+            groups.append({'label': label, 'count': int(val)})
+
+    # ── Individual diagnoses from detail sheet ───────────────────────────────
+    ws = wb['1a. Diagnose kode navn antall']
+    rows = list(ws.iter_rows(values_only=True))
+    hdr = next(r for r in rows if r[3] == 'Jan')
+    mai_col = next(i for i, v in enumerate(hdr) if v == 'Mai')
+
+    period_row = next(r for r in rows if isinstance(r[1], str) and r[1].startswith('Periode'))
+    period = period_row[1].strip()
+
+    current_group = None
+    diags = []
+    for row in rows:
+        v = row[1]
+        if not isinstance(v, str):
+            continue
+        v = v.strip()
+        if v in KNOWN_GROUPS:
+            current_group = v
+            continue
+        if not current_group:
+            continue
+        parts = v.split(' ', 1)
+        if (len(parts) == 2 and len(parts[0]) >= 3
+                and parts[0][0].isalpha() and parts[0][1].isdigit()):
+            mai_val = row[mai_col]
+            if isinstance(mai_val, (int, float)):
+                diags.append({
+                    'code':  parts[0],
+                    'label': parts[1],
+                    'group': current_group,
+                    'count': int(mai_val),
+                })
+
+    diags.sort(key=lambda x: x['count'], reverse=True)
+    return {'period': period, 'total': total, 'groups': groups, 'diags': diags}
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
     print("=== Fetching Excel URLs ===")
-    t1_url = find_xlsx(UF_PAGE, "Upantall_diagnoser")
-    t3_url = find_xlsx(UF_PAGE, "mest brukte")
-    sf_url = find_xlsx(SF_PAGE, "SYFRA 2301")
+    t1_url  = find_xlsx(UF_PAGE,  "Upantall_diagnoser")
+    t3_url  = find_xlsx(UF_PAGE,  "mest brukte")
+    sf_url  = find_xlsx(SF_PAGE,  "SYFRA 2301")
+    aap_url = find_xlsx(AAP_PAGE, "AAP180")
 
     print("\n=== Downloading & parsing uføretrygd ===")
     wb1 = download_wb(t1_url)
@@ -232,17 +303,24 @@ def main():
     wb_sf = download_wb(sf_url)
     sykefravar = parse_sykefravar(wb_sf)
 
+    print("\n=== Downloading & parsing AAP ===")
+    wb_aap = download_wb(aap_url)
+    aap = parse_aap(wb_aap)
+
     out = {
         "generated": date.today().isoformat(),
         "sources": {
             "uforetrygd_page": UF_PAGE,
             "sykefravar_page": SF_PAGE,
-            "tabell1_url": t1_url,
-            "tabell3_url": t3_url,
+            "aap_page":        AAP_PAGE,
+            "tabell1_url":  t1_url,
+            "tabell3_url":  t3_url,
             "syfra2301_url": sf_url,
+            "aap180_url":   aap_url,
         },
         "uforetrygd": uforetrygd,
         "sykefravar": sykefravar,
+        "aap": aap,
     }
 
     with open("data.json", "w", encoding="utf-8") as f:

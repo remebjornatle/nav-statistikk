@@ -1,11 +1,13 @@
 {
-  "generated": "2026-07-09",
+  "generated": "2026-07-10",
   "sources": {
     "uforetrygd_page": "https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/uforetrygd/diagnoser-uforetrygd",
     "sykefravar_page": "https://www.nav.no/no/nav-og-samfunn/statistikk/sykefravar-statistikk/sykefravaersstatistikk-arsstatistikk",
+    "aap_page": "https://www.nav.no/no/nav-og-samfunn/statistikk/aap-nedsatt-arbeidsevne-og-uforetrygd-statistikk/arbeidsavklaringspenger",
     "tabell1_url": "https://www.nav.no/_/attachment/download/381d9f6d-106f-40c3-ba2e-82779af9c418:37a6ed86af559a6607428b1f5ac93e567332c3a0/Tabell%201_Upantall_diagnoser_kj%C3%B8nn_%C3%A5r_2012-2025.xlsx",
     "tabell3_url": "https://www.nav.no/_/attachment/download/9e5f09c6-ea4a-44f2-8ccc-4dd5bf6e4dbd:a50d63e8ccbd31f2bdb58858364b8d8654439b3c/Tabell%203_Uf%C3%B8rediagnoser_2025_De%20mest%20brukte.xlsx",
-    "syfra2301_url": "https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx"
+    "syfra2301_url": "https://www.nav.no/_/attachment/download/8494f74b-c515-40ac-bcc6-d0fae1a17184:af5acb7c476b02ea147945fa39a26f3540131c20/SYFRA%202301%20Legemeldt%20sykefrav%C3%A6r%20etter%20enkeltdiagnoser.%20%C3%85r_2025.xlsx",
+    "aap180_url": "https://www.nav.no/_/attachment/download/90521bb3-c0a9-4598-b07e-379286f25dcd:71699dd2077046b2f5b2d8ee4d4810aec2c3ad4d/AAP180%20Mottakere%20av%20arbeidsavklaringspenger.%20Diagnose%20detaljer.%20Januar%20til%20mai%202026.xlsx"
   },
   "uforetrygd": {
     "years1": [
@@ -1360,6 +1362,586 @@
           35.39,
           31.93
         ]
+      }
+    ]
+  },
+  "aap": {
+    "period": "Periode 202601 - 202605",
+    "total": 168852,
+    "groups": [
+      {
+        "label": "Allment",
+        "count": 12775
+      },
+      {
+        "label": "Andre lidelser",
+        "count": 8102
+      },
+      {
+        "label": "Hjerte- og karsykdommer",
+        "count": 4272
+      },
+      {
+        "label": "Kreft",
+        "count": 5190
+      },
+      {
+        "label": "Muskel- og skjelettlidelser",
+        "count": 46841
+      },
+      {
+        "label": "Psykiske lidelser",
+        "count": 74715
+      },
+      {
+        "label": "Sykdommer i luftveiene",
+        "count": 1553
+      },
+      {
+        "label": "Sykdommer i nervesystemet",
+        "count": 11275
+      }
+    ],
+    "diags": [
+      {
+        "code": "P76",
+        "label": "Depressiv lidelse",
+        "group": "Psykiske lidelser",
+        "count": 18928
+      },
+      {
+        "code": "A04",
+        "label": "Slapphet/tretthet",
+        "group": "Allment",
+        "count": 8685
+      },
+      {
+        "code": "P82",
+        "label": "Posttraumatisk stresslidelse",
+        "group": "Psykiske lidelser",
+        "count": 8229
+      },
+      {
+        "code": "L18",
+        "label": "Utbredte muskelsmerter/fibromyalgi",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 7458
+      },
+      {
+        "code": "P74",
+        "label": "Angstlidelse",
+        "group": "Psykiske lidelser",
+        "count": 5871
+      },
+      {
+        "code": "P81",
+        "label": "Hyperkinetisk forstyrrelse",
+        "group": "Psykiske lidelser",
+        "count": 5847
+      },
+      {
+        "code": "P29",
+        "label": "Psykiske symptomer/plager IKA",
+        "group": "Psykiske lidelser",
+        "count": 5396
+      },
+      {
+        "code": "L86",
+        "label": "Ryggsyndrom med smerteutstråling",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 5226
+      },
+      {
+        "code": "P99",
+        "label": "Psykisk lidelse IKA",
+        "group": "Psykiske lidelser",
+        "count": 4122
+      },
+      {
+        "code": "N89",
+        "label": "Migrene",
+        "group": "Sykdommer i nervesystemet",
+        "count": 3859
+      },
+      {
+        "code": "P80",
+        "label": "Personlighetsforstyrrelse",
+        "group": "Psykiske lidelser",
+        "count": 3229
+      },
+      {
+        "code": "L02",
+        "label": "Rygg symptomer/plager",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 3033
+      },
+      {
+        "code": "P02",
+        "label": "Psykisk ubalanse situasjonsbetinget",
+        "group": "Psykiske lidelser",
+        "count": 2953
+      },
+      {
+        "code": "L92",
+        "label": "Skuldersyndrom",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 2934
+      },
+      {
+        "code": "P19",
+        "label": "Stoffmisbruk",
+        "group": "Psykiske lidelser",
+        "count": 2897
+      },
+      {
+        "code": "P79",
+        "label": "Fobi/obsessiv-kompulsiv lidelse",
+        "group": "Psykiske lidelser",
+        "count": 2880
+      },
+      {
+        "code": "L99",
+        "label": "Muskel-skjelettsykdom IKA",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 2315
+      },
+      {
+        "code": "L84",
+        "label": "Ryggsyndrom uten smerteutstråling",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 2188
+      },
+      {
+        "code": "L83",
+        "label": "Nakkesyndrom",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 2167
+      },
+      {
+        "code": "X76",
+        "label": "Ondartet svulst bryst (K)",
+        "group": "Kreft",
+        "count": 2131
+      },
+      {
+        "code": "L08",
+        "label": "Skulder symptomer/plager",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 2126
+      },
+      {
+        "code": "L90",
+        "label": "Kneleddsartrose",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 1837
+      },
+      {
+        "code": "L03",
+        "label": "Korsrygg symptomer/plager",
+        "group": "Muskel- og skjelettlidelser",
+        "count": 1827
+      },
+      {
+        "code": "D94",
+        "label": "Kronisk enteritt/ulcerøs kolitt",
+        "group": "Psykiske lidelser",
+        "count": 1304
+      },
+      {
+        "code": "A82",
+        "label": "Følgetilstand skade/traume",
+        "group": "Allment",
+        "count": 1109
+      },
+      {
+        "code": "N01",
+        "label": "Hodepine",
+        "group": "Sykdommer i nervesystemet",
+        "count": 1047
+      },
+      {
+        "code": "K90",
+        "label": "Hjerneslag",
+        "group": "Hjerte- og karsykdommer",
+        "count": 883
+      },
+      {
+        "code": "A01",
+        "label": "Smerte generell/flere steder",
+        "group": "Allment",
+        "count": 778
+      },
+      {
+        "code": "N86",
+        "label": "Multippel sklerose",
+        "group": "Sykdommer i nervesystemet",
+        "count": 748
+      },
+      {
+        "code": "N94",
+        "label": "Perifer nevropati",
+        "group": "Sykdommer i nervesystemet",
+        "count": 698
+      },
+      {
+        "code": "N99",
+        "label": "Sykdom i nervesystemet IKA",
+        "group": "Sykdommer i nervesystemet",
+        "count": 677
+      },
+      {
+        "code": "N17",
+        "label": "Svimmelhet IKA",
+        "group": "Sykdommer i nervesystemet",
+        "count": 640
+      },
+      {
+        "code": "N79",
+        "label": "Hjernerystelse",
+        "group": "Sykdommer i nervesystemet",
+        "count": 638
+      },
+      {
+        "code": "T90",
+        "label": "Diabetes type 2",
+        "group": "Andre lidelser",
+        "count": 622
+      },
+      {
+        "code": "N88",
+        "label": "Epilepsi",
+        "group": "Sykdommer i nervesystemet",
+        "count": 615
+      },
+      {
+        "code": "D75",
+        "label": "Ondartet svulst tykktarm/endetarm",
+        "group": "Kreft",
+        "count": 568
+      },
+      {
+        "code": "D93",
+        "label": "Irritabel tarm-syndrom",
+        "group": "Psykiske lidelser",
+        "count": 536
+      },
+      {
+        "code": "H82",
+        "label": "Svimmelhetssyndrom",
+        "group": "Andre lidelser",
+        "count": 534
+      },
+      {
+        "code": "A99",
+        "label": "Helseproblem/sykdom IKA",
+        "group": "Allment",
+        "count": 520
+      },
+      {
+        "code": "X99",
+        "label": "Kjønnsorgan sykdom IKA (K)",
+        "group": "Andre lidelser",
+        "count": 504
+      },
+      {
+        "code": "N93",
+        "label": "Carpal tunnel syndrom",
+        "group": "Sykdommer i nervesystemet",
+        "count": 497
+      },
+      {
+        "code": "D01",
+        "label": "Abdominalsmerte/krampe generell",
+        "group": "Psykiske lidelser",
+        "count": 476
+      },
+      {
+        "code": "K91",
+        "label": "Cerebrovaskulær sykdom",
+        "group": "Hjerte- og karsykdommer",
+        "count": 422
+      },
+      {
+        "code": "K76",
+        "label": "Iskemisk hjertesykdom kronisk IKA",
+        "group": "Hjerte- og karsykdommer",
+        "count": 389
+      },
+      {
+        "code": "K77",
+        "label": "Hjertesvikt",
+        "group": "Hjerte- og karsykdommer",
+        "count": 365
+      },
+      {
+        "code": "T82",
+        "label": "Fedme",
+        "group": "Andre lidelser",
+        "count": 362
+      },
+      {
+        "code": "R96",
+        "label": "Astma",
+        "group": "Sykdommer i luftveiene",
+        "count": 361
+      },
+      {
+        "code": "T99",
+        "label": "Endokrin/metabol/ernær sykd IKA",
+        "group": "Andre lidelser",
+        "count": 350
+      },
+      {
+        "code": "T86",
+        "label": "Hypotyreose/myksødem",
+        "group": "Andre lidelser",
+        "count": 349
+      },
+      {
+        "code": "H03",
+        "label": "Øresus",
+        "group": "Andre lidelser",
+        "count": 348
+      },
+      {
+        "code": "U99",
+        "label": "Urinveissykdom IKA",
+        "group": "Andre lidelser",
+        "count": 327
+      },
+      {
+        "code": "R95",
+        "label": "Kronisk obstruktiv lungesykdom",
+        "group": "Sykdommer i luftveiene",
+        "count": 323
+      },
+      {
+        "code": "T85",
+        "label": "Hypertyreose/tyreotoksikose",
+        "group": "Andre lidelser",
+        "count": 318
+      },
+      {
+        "code": "B72",
+        "label": "Hodgkins sykdom/lymfom",
+        "group": "Kreft",
+        "count": 318
+      },
+      {
+        "code": "T89",
+        "label": "Diabetes type 1",
+        "group": "Andre lidelser",
+        "count": 314
+      },
+      {
+        "code": "N95",
+        "label": "Tensjonshodepine",
+        "group": "Sykdommer i nervesystemet",
+        "count": 282
+      },
+      {
+        "code": "A87",
+        "label": "Komplikasjon etter behandling",
+        "group": "Allment",
+        "count": 262
+      },
+      {
+        "code": "K99",
+        "label": "Hjerte-karsykdom IKA",
+        "group": "Hjerte- og karsykdommer",
+        "count": 261
+      },
+      {
+        "code": "K86",
+        "label": "Hypertensjon ukomplisert",
+        "group": "Hjerte- og karsykdommer",
+        "count": 248
+      },
+      {
+        "code": "D99",
+        "label": "Sykdom i fordøyelsessystemet IKA",
+        "group": "Psykiske lidelser",
+        "count": 245
+      },
+      {
+        "code": "K84",
+        "label": "Hjertesykdom IKA",
+        "group": "Hjerte- og karsykdommer",
+        "count": 217
+      },
+      {
+        "code": "X77",
+        "label": "Ondartet svulst kjønnsorg IKA (K)",
+        "group": "Kreft",
+        "count": 208
+      },
+      {
+        "code": "Y77",
+        "label": "Ondartet svulst prostata",
+        "group": "Kreft",
+        "count": 206
+      },
+      {
+        "code": "B73",
+        "label": "Leukemi",
+        "group": "Kreft",
+        "count": 203
+      },
+      {
+        "code": "R992",
+        "label": "Covid-19 (bekreftet)",
+        "group": "Sykdommer i luftveiene",
+        "count": 196
+      },
+      {
+        "code": "K75",
+        "label": "Akutt hjerteinfarkt",
+        "group": "Hjerte- og karsykdommer",
+        "count": 189
+      },
+      {
+        "code": "K78",
+        "label": "Atrieflimmer/flutter",
+        "group": "Hjerte- og karsykdommer",
+        "count": 189
+      },
+      {
+        "code": "D77",
+        "label": "Ondartet svulst fordøyelsesyst IKA",
+        "group": "Kreft",
+        "count": 184
+      },
+      {
+        "code": "R02",
+        "label": "Kortpustethet/dyspné",
+        "group": "Sykdommer i luftveiene",
+        "count": 182
+      },
+      {
+        "code": "D97",
+        "label": "Leversykdom IKA",
+        "group": "Psykiske lidelser",
+        "count": 178
+      },
+      {
+        "code": "R84",
+        "label": "Ondartet svulst bronkie/lunge",
+        "group": "Kreft",
+        "count": 174
+      },
+      {
+        "code": "A78",
+        "label": "Infeksjonssykdom IKA",
+        "group": "Allment",
+        "count": 173
+      },
+      {
+        "code": "R99",
+        "label": "Luftveissykdom IKA",
+        "group": "Sykdommer i luftveiene",
+        "count": 171
+      },
+      {
+        "code": "A80",
+        "label": "Skade/traume IKA",
+        "group": "Allment",
+        "count": 167
+      },
+      {
+        "code": "D95",
+        "label": "Analfissur/perianal abscess",
+        "group": "Psykiske lidelser",
+        "count": 144
+      },
+      {
+        "code": "N74",
+        "label": "Ondartet svulst nervesystemet",
+        "group": "Kreft",
+        "count": 141
+      },
+      {
+        "code": "A90",
+        "label": "Medfødt feil IKA/multiple feil",
+        "group": "Allment",
+        "count": 136
+      },
+      {
+        "code": "S77",
+        "label": "Ondartet svulst hud",
+        "group": "Kreft",
+        "count": 135
+      },
+      {
+        "code": "K83",
+        "label": "Hjerteklaffesykdom IKA",
+        "group": "Hjerte- og karsykdommer",
+        "count": 122
+      },
+      {
+        "code": "D06",
+        "label": "Abdominalsmerte lokalisert IKA",
+        "group": "Psykiske lidelser",
+        "count": 117
+      },
+      {
+        "code": "A89",
+        "label": "Komplikasjoner/problemer med protese",
+        "group": "Allment",
+        "count": 108
+      },
+      {
+        "code": "D11",
+        "label": "Diaré",
+        "group": "Psykiske lidelser",
+        "count": 104
+      },
+      {
+        "code": "D84",
+        "label": "Spiserørssykdom",
+        "group": "Psykiske lidelser",
+        "count": 97
+      },
+      {
+        "code": "A81",
+        "label": "Multiple skader/traumer",
+        "group": "Allment",
+        "count": 93
+      },
+      {
+        "code": "D04",
+        "label": "Endetarmssmerte",
+        "group": "Psykiske lidelser",
+        "count": 79
+      },
+      {
+        "code": "R75",
+        "label": "Bihulebetennelse",
+        "group": "Sykdommer i luftveiene",
+        "count": 70
+      },
+      {
+        "code": "R05",
+        "label": "Hoste",
+        "group": "Sykdommer i luftveiene",
+        "count": 31
+      },
+      {
+        "code": "R23",
+        "label": "Stemme symptomer/plager",
+        "group": "Sykdommer i luftveiene",
+        "count": 26
+      },
+      {
+        "code": "R81",
+        "label": "Lungebetennelse",
+        "group": "Sykdommer i luftveiene",
+        "count": 23
+      },
+      {
+        "code": "R83",
+        "label": "Luftveisinfeksjon IKA",
+        "group": "Sykdommer i luftveiene",
+        "count": 22
       }
     ]
   }
